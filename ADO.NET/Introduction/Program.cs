@@ -8,7 +8,7 @@ namespace Introduction
         static void Main(string[] args)
         {
             string connectionString = "Server=DESKTOP-KQDB4SL\\SQLEXPRESS;DataBase=SoftUni;Trusted_Connection=True;Encrypt=false";
-            var connection = new SqlConnection(connectionString);
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 var query = "UPDATE Employees SET Salary = Salary + 10";

@@ -26,10 +26,39 @@ namespace SoftUni
             //Console.WriteLine(GetLatestProjects(SoftUniDb)); //Task 11
             //Console.WriteLine(IncreaseSalaries(SoftUniDb)); //Task 12
             //Console.WriteLine(GetEmployeesByFirstNameStartingWithSa(SoftUniDb)); //Task 13
-            //Console.WriteLine(GetEmployeesByFirstNameStartingWithSa(SoftUniDb)); //Task 14
-            Console.WriteLine(RemoveTown(SoftUniDb)); //Task 15
+            Console.WriteLine(DeleteProjectById(SoftUniDb)); //Task 14
+            //Console.WriteLine(RemoveTown(SoftUniDb)); //Task 15
 
         }
+        public static string DeleteProjectById(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            var project = context.Projects.Find(2);
+            var empProjects = context.EmployeesProjects
+               .Where(x => x.ProjectId == 2)
+               .ToList();
+
+            foreach (var item in empProjects)
+            {
+                context.EmployeesProjects.Remove(item);
+            }
+
+            context.SaveChanges();
+
+            context.Projects.Remove(project);
+
+            context.SaveChanges();
+
+            var projects = context.Projects.Take(10).ToList();
+            foreach (var pr in projects)
+            {
+                sb.AppendLine(pr.Name);
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
         public static string RemoveTown(SoftUniContext context)
         {
             var town = context.Towns

@@ -1,0 +1,16 @@
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\bin\Debug\netcoreapp2.1\FastFood.Data.deps.json
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\bin\Debug\netcoreapp2.1\FastFood.Data.runtimeconfig.json
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\bin\Debug\netcoreapp2.1\FastFood.Data.runtimeconfig.dev.json
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\bin\Debug\netcoreapp2.1\FastFood.Data.dll
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\bin\Debug\netcoreapp2.1\FastFood.Data.pdb
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\bin\Debug\netcoreapp2.1\FastFood.Models.dll
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\bin\Debug\netcoreapp2.1\FastFood.Models.pdb
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.AssemblyInfo.cs
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.csproj.CopyComplete
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.dll
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.pdb
+C:\Users\HP\Desktop\za git\07. Auto-Mapping-Objects-Project\FastFood.Data\obj\Debug\netcoreapp2.1\FastFood.Data.genruntimeconfig.cache

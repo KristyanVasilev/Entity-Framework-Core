@@ -52,47 +52,27 @@ namespace CarDealer
         }
         public static string GetSalesWithAppliedDiscount(CarDealerContext context)
         {
-            //var sales = context.Sales
-            //    .Take(10)
-            //    .Select(x => new
-            //    {
-            //        Car = new
-            //        {
-            //            Make = x.Car.Make,
-            //            Model = x.Car.Model,
-            //            TravelledDistance = x.Car.TravelledDistance
-            //        },
-            //        customerName = x.Customer.Name,
-            //        Discount = x.Discount,
-            //        price = x.Car.PartCars
-            //            .Sum(y => y.Part.Price)
-            //            .ToString("f2"),
-            //        priceWithoutDiscount = (x.Car.PartCars.Sum(y => y.Part.Price) - x.Car.PartCars.Sum(y => y.Part.Price) * x.Discount / 100).ToString("f2")
-            //    })
-            //    .ToList();
-
-            //var jsonResult = JsonConvert.SerializeObject(sales, Formatting.Indented);
-            //return jsonResult;
-
             var sales = context.Sales
                 .Take(10)
                 .Select(x => new
                 {
-                    x.Car.Make,
-                    x.Car.Model,
-                    x.Car.TravelledDistance,
-                    x.Customer.Name,
-                    x.Discount,
-                    price = x.Car.PartCars.Sum(y => y.Part.Price).ToString("f2"),
+                    Car = new
+                    {
+                        Make = x.Car.Make,
+                        Model = x.Car.Model,
+                        TravelledDistance = x.Car.TravelledDistance
+                    },
+                    customerName = x.Customer.Name,
+                    Discount = x.Discount,
+                    price = x.Car.PartCars
+                        .Sum(y => y.Part.Price)
+                        .ToString("f2"),
                     priceWithoutDiscount = (x.Car.PartCars.Sum(y => y.Part.Price) - x.Car.PartCars.Sum(y => y.Part.Price) * x.Discount / 100).ToString("f2")
                 })
                 .ToList();
 
-            var json = JsonConvert.SerializeObject(sales, Formatting.Indented);
-
-            File.WriteAllText("../../../sales-discounts.json", json);
-
-            return json;
+            var jsonResult = JsonConvert.SerializeObject(sales, Formatting.Indented);
+            return jsonResult;
         }
 
         public static string GetTotalSalesByCustomer(CarDealerContext context)

@@ -17,31 +17,35 @@ namespace Quiz.ConsoleUI
             ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            var quizService = serviceProvider.GetRequiredService<IQuizService>();
-            //quizService.Add("C# DB");
-            var quiz = quizService.GetQuizById(1);
-            Console.WriteLine(quiz.Title);
+            //var quizService = serviceProvider.GetRequiredService<IQuizService>();
+            ////quizService.Add("C# DB");
+            //var quiz = quizService.GetQuizById(1);
+            //Console.WriteLine(quiz.Title);
+            //
+            //foreach (var question in quiz.Questions)
+            //{
+            //    Console.WriteLine(question.Title);
+            //
+            //    foreach (var answer in question.Answers)
+            //    {
+            //        Console.WriteLine(answer.Title);
+            //    }
+            //}
 
-            foreach (var question in quiz.Questions)
-            {
-                Console.WriteLine(question.Title);
-
-                foreach (var answer in question.Answers)
-                {
-                    Console.WriteLine(answer.Title);
-                }
-            }
-
-            //var questionService = serviceProvider.GetRequiredService<IQestionService>();
-            //questionService.Add("What is Entity Framework Core?", 1);
-
-            //var answerService = serviceProvider.GetRequiredService<IAnswerService>();
-            //answerService.Add("It is a ORM", false, 0, 2);
+           //var questionService = serviceProvider.GetRequiredService<IQestionService>();
+           ////questionService.Add("What is Entity Framework Core?", 1);
+           //questionService.Add("1+1=?", 1);
+           //
+           //var answerService = serviceProvider.GetRequiredService<IAnswerService>();
+           //answerService.Add("2", true, 5, 3);
+            //answerService.Add("It is a ORM", false, 2, 2);
             //answerService.Add("It is a Mirco ORM", false, 0, 2);
 
-            //var userAnswerService = serviceProvider.GetRequiredService<IUserAnswerService>();
+            var userAnswerService = serviceProvider.GetRequiredService<IUserAnswerService>();
             //userAnswerService.AddUserAnswer("f93c227b-a54e-4a24-8703-cebec0870837", 1, 2, 2);
-
+            userAnswerService.AddUserAnswer("f93c227b-a54e-4a24-8703-cebec0870837", 1, 3, 1);
+            var userPoints = userAnswerService.GetUserResult("f93c227b-a54e-4a24-8703-cebec0870837", 1);
+            Console.WriteLine(userPoints);
         }
 
         private static void ConfigureServices(IServiceCollection services)

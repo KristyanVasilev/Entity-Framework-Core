@@ -4,6 +4,7 @@ using Quiz.Models;
 using Quiz.Services.ModelsInfo;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Quiz.Services
 {
@@ -15,7 +16,8 @@ namespace Quiz.Services
         {
             this.dbContext = dbContext;
         }
-        public void Add(string title)
+
+        public int Add(string title)
         {
             var quiz = new Models.Quiz
             {
@@ -24,6 +26,8 @@ namespace Quiz.Services
 
             this.dbContext.Quizes.Add(quiz);
             this.dbContext.SaveChanges();
+
+            return quiz.Id;
         }
 
         public QuizInfoViewModel GetQuizById(int quizId)
@@ -50,6 +54,46 @@ namespace Quiz.Services
             };
 
             return quizModel;
+        }
+
+        public IEnumerable<UserQuizViewModel> GetQuizesByUsername(string username)
+        {
+            var quizes = dbContext.Quizes
+                .Select(x => new UserQuizViewModel
+                {
+                    QuizId = x.Id,
+                    Title = x.Title
+                })
+                .ToList();
+
+            foreach (var quiz in quizes)
+            {
+                var questionsCount = dbContext.UserAnswers
+                    .Count(ua => ua.IdentityUser.UserName == username
+                              && ua.Question.QuizId == quiz.QuizId);
+
+                if (questionsCount == 0)
+                {
+                    quiz.Status = QuizStatus.NotStarted;
+                    continue;
+                }
+
+                var answeredQuestionsCount = dbContext.UserAnswers
+                   .Count(ua => ua.IdentityUser.UserName == username
+                             && ua.Question.QuizId == quiz.QuizId
+                             && ua.AnswerId.HasValue);
+
+                if (answeredQuestionsCount == questionsCount)
+                {
+                    quiz.Status = QuizStatus.Finished;
+                }
+                else
+                {
+                    quiz.Status = QuizStatus.InProgress;
+                }
+            }
+
+            return quizes;
         }
     }
 }

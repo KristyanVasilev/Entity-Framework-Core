@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Quiz.Data;
+using Quiz.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +33,14 @@ namespace Quiz.Web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddTransient<IQuizService, QuizService>();
+            services.AddTransient<IQestionService, QuestionService>();
+            services.AddTransient<IAnswerService, AnswerService>();
+            services.AddTransient<IUserAnswerService, UserAnswerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

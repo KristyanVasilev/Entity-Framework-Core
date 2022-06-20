@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Quiz.Data;
 using Quiz.Services;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Quiz.ConsoleUI
@@ -17,35 +19,26 @@ namespace Quiz.ConsoleUI
             ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            //var quizService = serviceProvider.GetRequiredService<IQuizService>();
-            ////quizService.Add("C# DB");
-            //var quiz = quizService.GetQuizById(1);
-            //Console.WriteLine(quiz.Title);
-            //
-            //foreach (var question in quiz.Questions)
-            //{
-            //    Console.WriteLine(question.Title);
-            //
-            //    foreach (var answer in question.Answers)
-            //    {
-            //        Console.WriteLine(answer.Title);
-            //    }
-            //}
+            var json = File.ReadAllText("EF-Core-Quiz.json");
+            var questions = JsonConvert.DeserializeObject<IEnumerable<JsonQuestion>>(json);
 
-           //var questionService = serviceProvider.GetRequiredService<IQestionService>();
-           ////questionService.Add("What is Entity Framework Core?", 1);
-           //questionService.Add("1+1=?", 1);
-           //
-           //var answerService = serviceProvider.GetRequiredService<IAnswerService>();
-           //answerService.Add("2", true, 5, 3);
-            //answerService.Add("It is a ORM", false, 2, 2);
-            //answerService.Add("It is a Mirco ORM", false, 0, 2);
+            var quizService = serviceProvider.GetRequiredService<IQuizService>();
+            var questionService = serviceProvider.GetRequiredService<IQestionService>();
+            var answerService = serviceProvider.GetRequiredService<IAnswerService>();
 
-            var userAnswerService = serviceProvider.GetRequiredService<IUserAnswerService>();
-            //userAnswerService.AddUserAnswer("f93c227b-a54e-4a24-8703-cebec0870837", 1, 2, 2);
-            userAnswerService.AddUserAnswer("f93c227b-a54e-4a24-8703-cebec0870837", 1, 3, 1);
-            var userPoints = userAnswerService.GetUserResult("f93c227b-a54e-4a24-8703-cebec0870837", 1);
-            Console.WriteLine(userPoints);
+            var quizId = quizService.Add("EF Core Test");
+            foreach (var question in questions)
+            {
+                var questionId = questionService.Add(question.Question, quizId);
+                foreach (var answer in question.Answers)
+                {
+                    answerService.Add(answer.Answer, answer.Correct, answer.Correct ? 1 : 0, questionId);
+                }
+            }
+
+            //var userAnswerService = serviceProvider.GetRequiredService<IUserAnswerService>();
+            //userAnswerService.AddUserAnswer("f93c227b-a54e-4a24-8703-cebec0870837", 2, 2);
+  
         }
 
         private static void ConfigureServices(IServiceCollection services)
@@ -55,7 +48,7 @@ namespace Quiz.ConsoleUI
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            services.AddDbContext<ApplicationDbContext>(options 
+            services.AddDbContext<ApplicationDbContext>(options
                 => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

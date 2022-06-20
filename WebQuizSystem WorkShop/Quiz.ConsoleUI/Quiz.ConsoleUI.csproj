@@ -11,6 +11,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.15" />
+		<PackageReference Include="System.Text.Json" Version="5.0.0" />
 	</ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Quiz.Data\Quiz.Data.csproj" />
     <ProjectReference Include="..\Quiz.Services\Quiz.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EF-Core-Quiz.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

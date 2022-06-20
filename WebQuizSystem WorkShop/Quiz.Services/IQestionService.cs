@@ -9,5 +9,7 @@ namespace Quiz.Services
     public interface IQestionService
     {
         int Add(string title, int quizId);
+
+
     }
 }

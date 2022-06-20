@@ -15,6 +15,7 @@ namespace RealEstates.Services.DTOs
         public int Price { get; set; }
 
         public string PropertyType { get; set; }
+
         public string BuildingType { get; set; }
     }
 }

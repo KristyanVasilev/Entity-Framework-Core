@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RealEstates.Data;
 using RealEstates.Services;
+using RealEstates.Services.DTOs;
 using System;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace RealEstates.ConsoleApplication
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.Unicode;
+            Console.InputEncoding = Encoding.Unicode; 
             var db = new ApplicationDbContext();
             db.Database.Migrate();
 
@@ -22,6 +24,8 @@ namespace RealEstates.ConsoleApplication
                 Console.WriteLine("1. Property search");
                 Console.WriteLine("2. Most expensive districts");
                 Console.WriteLine("3. Average price per square meter in Sofia");
+                Console.WriteLine("4. Add Tag");
+                Console.WriteLine("5. BulkTagToProperties");
                 Console.WriteLine("0. EXIT");
                 bool parsed = int.TryParse(Console.ReadLine(), out int option);
                 if (parsed && option == 0)
@@ -29,7 +33,7 @@ namespace RealEstates.ConsoleApplication
                     break;
                 }
 
-                if (parsed && option >= 1 && option <= 3)
+                if (parsed && option >= 1 && option <= 5)
                 {
                     switch (option)
                     {
@@ -42,12 +46,43 @@ namespace RealEstates.ConsoleApplication
                         case 3:
                             AveragePricePerSquareMeter(db);
                             break;
+                        case 4:
+                            AddTag(db);
+                            break;
+                        case 5:
+                            BulkTagToProperties(db);
+                            break;
                     }
 
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();
                 }
             }
+        }
+
+        private static void BulkTagToProperties(ApplicationDbContext db)
+        {
+            IPropertiesService propertiesService = new PropertiesService(db);
+            ITagService tagService = new TagService(db, propertiesService);
+
+            Console.WriteLine("Start Bulking!");
+            tagService.BulkTagProperties();
+            Console.WriteLine("Done!");
+        }
+
+        private static void AddTag(ApplicationDbContext db)
+        {
+            IPropertiesService propertiesService = new PropertiesService(db);
+
+            Console.Write("Tag name: ");
+            var tagName = Console.ReadLine();
+            Console.WriteLine("Importance(optional): ");
+            bool isParsed = int.TryParse(Console.ReadLine(), out int tagImp);
+            int? importance = isParsed ? tagImp : null;
+
+            ITagService tagService = new TagService(db, propertiesService);
+
+            tagService.Add(tagName, importance);
         }
 
         private static void AveragePricePerSquareMeter(ApplicationDbContext dbContext)

@@ -1,0 +1,254 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.ConsoleApplication\\RealEstates.ConsoleApplication.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.ConsoleApplication\\RealEstates.ConsoleApplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.ConsoleApplication\\RealEstates.ConsoleApplication.csproj",
+        "projectName": "RealEstates.ConsoleApplication",
+        "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.ConsoleApplication\\RealEstates.ConsoleApplication.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.ConsoleApplication\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Data\\RealEstates.Data.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Data\\RealEstates.Data.csproj"
+              },
+              "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Services\\RealEstates.Services.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Services\\RealEstates.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Data\\RealEstates.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Data\\RealEstates.Data.csproj",
+        "projectName": "RealEstates.Data",
+        "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Data\\RealEstates.Data.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Models\\RealEstates.Models.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Models\\RealEstates.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Models\\RealEstates.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Models\\RealEstates.Models.csproj",
+        "projectName": "RealEstates.Models",
+        "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Models\\RealEstates.Models.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Services\\RealEstates.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Services\\RealEstates.Services.csproj",
+        "projectName": "RealEstates.Services",
+        "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Services\\RealEstates.Services.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Data\\RealEstates.Data.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Data\\RealEstates.Data.csproj"
+              },
+              "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Models\\RealEstates.Models.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\za git\\RealEstates\\RealEstates\\RealEstates.Models\\RealEstates.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

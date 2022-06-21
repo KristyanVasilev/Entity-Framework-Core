@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using Quiz.Data;
 using Quiz.Models;
 using Quiz.Services.ModelsInfo;
@@ -41,11 +41,11 @@ namespace Quiz.Services
             {
                 Id = quizId,
                 Title = quiz.Title,
-                Questions = quiz.Questions.Select(q => new QuestionViewModel
+                Questions = quiz.Questions.OrderBy(r => Guid.NewGuid()).Select(q => new QuestionViewModel
                 {
                     Id = q.Id,
                     Title = q.Title,
-                    Answers = q.Answers.Select(a => new AnswerViewModel
+                    Answers = q.Answers.OrderBy(r => Guid.NewGuid()).Select(a => new AnswerViewModel
                     {
                         Id = a.Id,
                         Title = a.Title

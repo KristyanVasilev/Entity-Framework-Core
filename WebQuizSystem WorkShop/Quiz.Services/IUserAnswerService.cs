@@ -9,10 +9,10 @@ namespace Quiz.Services
 {
     public interface IUserAnswerService
     {
-        void AddUserAnswer(string userId, int questionId, int answerId);
+        void AddUserAnswer(string username, int questionId, int answerId);
 
         void BulkAddUserAnswer(QuizInputModel quizInputModel);
 
-        int GetUserResult(string userId, int quizId);
+        int GetUserResult(string username, int quizId);
     }
 }

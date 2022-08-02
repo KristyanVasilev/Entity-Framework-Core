@@ -5,13 +5,38 @@
     using System.Linq;
     using Data;
     using Newtonsoft.Json;
+    using TeisterMask.DataProcessor.ExportDto;
     using Formatting = Newtonsoft.Json.Formatting;
 
     public class Serializer
     {
         public static string ExportProjectWithTheirTasks(TeisterMaskContext context)
         {
-            return "TODO";
+
+            var projects = context.Projects
+                .Where(x => x.Tasks.Count > 0)
+                .ToArray()
+                .Select(x => new ProjectExprotXmlModel
+                {
+                    TasksCount = x.Tasks.Count,
+                    ProjectName = x.Name,
+                    HasEndDate = x.DueDate.HasValue ? "Yes" : "No",
+                    Tasks = x.Tasks.Select(t => new ProjectTaskExprotXmlModel
+                    {
+                        Name = t.Name,
+                        Label = t.LabelType.ToString()
+                    })
+                    .OrderBy(t => t.Name)
+                    .ToArray()
+                }) 
+                .OrderByDescending(x => x.TasksCount)
+                .ThenBy(x => x.ProjectName)
+                .ToArray();
+
+            
+            var result = XmlConverter.Serialize(projects, "Projects");
+
+            return result;
         }
 
         public static string ExportMostBusiestEmployees(TeisterMaskContext context, DateTime date)

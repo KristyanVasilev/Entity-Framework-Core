@@ -1,7 +1,10 @@
 ﻿namespace VaporStore.DataProcessor
 {
 	using System;
+    using System.Globalization;
+    using System.IO;
     using System.Linq;
+    using System.Xml.Serialization;
     using Data;
     using Newtonsoft.Json;
     using VaporStore.Data.Models;
@@ -48,10 +51,46 @@
 
 		public static string ExportUserPurchasesByType(VaporStoreDbContext context, string storeType)
 		{
+            var users = context
+             .Users
+             .ToArray()
+             .Where(u => u.Cards.Any(c => c.Purchases.Any()))
+             .Select(u => new UserXmlExportModel()
+             {
+                 Username = u.Username,
+                 Purchases = context
+                     .Purchases
+                     .ToArray()
+                     .Where(p => p.Card.User.Username == u.Username && p.Type.ToString() == storeType)
+                     .OrderBy(p => p.Date)
+                     .Select(p => new PurchaseExportModelModel()
+                     {
+                         Card = p.Card.Number,
+                         Cvc = p.Card.Cvc,
+                         Date = p.Date.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture),
+                         Game = new GameXmlExportModel()
+                         {
+                             Title = p.Game.Name,
+                             Genre = p.Game.Genre.Name,
+                             Price = p.Game.Price
+                         }
+                     })
+                     .ToArray(),
+                 TotalSpent = context
+                     .Purchases
+                     .ToArray()
+                     .Where(p => p.Card.User.Username == u.Username && p.Type.ToString() == storeType)
+                     .Sum(p => p.Game.Price)
+             })
+             .Where(u => u.Purchases.Length > 0)
+             .OrderByDescending(u => u.TotalSpent)
+             .ThenBy(u => u.Username)
+             .ToArray();
 
-          
 
-            return "TODO";
+            var result = XmlConverter.Serialize(users, "Users");
+
+            return result;
         }
 	}
 }
